@@ -46,7 +46,7 @@ def make_customer():
     budget = randint(200, 500)
     ) 
     session.add(customer)
-    session.commit():
+    session.commit()
     return customer
 
 
