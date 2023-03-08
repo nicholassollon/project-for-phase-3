@@ -1,3 +1,4 @@
+from sqlalchemy import create_engine, func
 from sqlalchemy import ForeignKey, Table, Column, Integer, Float, String
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.declarative import declarative_base
@@ -11,11 +12,13 @@ class ClothingArticle:
     id = Column(Integer(), primary_key=True)
     brand = Column(String())
     clothing_type = Column(String())
+    price = Column(Float())
     sizes = Column(String())
     store_id = Column(Integer, ForeignKey('stores.id'))
 
+    stores = relationship('Store', back_populates='clothingarticles')
     def __repr__(self):
-        return f'{self.clothing_type} by {self.brand}'
+        return f'{self.clothing_type} by {self.brand}' 
 
 class Customer:
     __tablename__ = 'customers'
@@ -45,6 +48,8 @@ class Closet:
 
     id = Column(Integer(), primary_key=True)
     clothes = Column(Integer(), ForeignKey('clothingarticles.id'))
+
+    clothingarticles = relationship('ClothingArticle')
 
     def __repr__(self):
         return f'{self.id}'
