@@ -34,6 +34,12 @@ Basic Controls:
 Any and all reviews of us, complaints, and suggestions 
 may be sent to clothesrus@nonexistantemail.com 
 or tweeted to us @ClothesRUsCorporate
+
+How to create your database:
+~ pipenv install 
+~ pipenv shell 
+~ alembic upgrade head 
+~ alembic upgrade --autogenerate -m "commit you change in this message."
     
 
 
