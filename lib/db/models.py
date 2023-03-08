@@ -13,8 +13,7 @@ class ClothingArticle:
     clothing_type = Column(String())
     price = Column(Float())
     store_id = Column(Integer, ForeignKey('stores.id'))
-    
-    customer = relationship('Customer', back_populates = 'clothing_articles')
+    customer_id = Column(Integer, ForeignKey('customers.id'))
 
     def __repr__(self):
         return f'{self.clothing_type} by {self.brand}' 
