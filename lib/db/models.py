@@ -16,7 +16,6 @@ class ClothingArticle:
     sizes = Column(String())
     store_id = Column(Integer, ForeignKey('stores.id'))
 
-    stores = relationship('Store', back_populates='clothingarticles')
     def __repr__(self):
         return f'{self.clothing_type} by {self.brand}' 
 
@@ -27,8 +26,6 @@ class Customer:
     name = Column(String())
     budget = Column(Float())
     closet = Column(Integer(), ForeignKey('closets.id'))
-
-    closet = relationship('Closet', backref=backref('customer'))
 
 
 class Store(Base):
