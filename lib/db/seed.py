@@ -1,12 +1,11 @@
-from faker import Faker
 from random import random, randint, choice as rc
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from models import ClothingArticle, Customer, Store
 
 # Initialize faker
-fake = Faker()
-engine = create_engine("sqlite:///clothes_r_us.db")
+# fake = Faker()
+engine = create_engine("sqlite:///project-for-phase-3.db")
 session = sessionmaker(bind=engine)()
 
 clothing_type = ["shirts", "pants", "underwear", "sweaters", ]
@@ -42,7 +41,7 @@ def make_store():
 def make_customer():
     print ("Welcoming Customer...")
     customer = Customer (
-    name = fake.name(),
+    name = "Nick",
     budget = randint(200, 500)
     ) 
     session.add(customer)
@@ -61,11 +60,11 @@ def clear_all_data():
 def refresh_all_data():
     clear_all_data()
     for i in range(20):
-        make_clothing()*i
+        make_clothing()
     for i in range(5):
-        make_store()*i
+        make_store()
     for i in range (3):
-        make_customer()*i
+        make_customer()
         
 if __name__ == '__main__':
     refresh_all_data()
