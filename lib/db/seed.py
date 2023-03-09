@@ -11,16 +11,16 @@ session = sessionmaker(bind=engine)()
 clothing_type = ["shirts", "pants", "underwear", "sweaters", ]
 brand = ["Nike", "Louis Vuitton", "Gucci", "Chanel",
          "Adidas", "Hermès", "Zara", "H&M", "Cartier", "UNIQLO"]
-store_name = ["Macy\'s", "Kohls", "Gabe\'s", "JC Penny"]
+store_names = ["Macy\'s", "Kohls", "Gabe\'s", "JC Penny"]
 
 
-def make_clothing():
+def make_clothing(id):
 
     print("Making clothes...")
     clothing = ClothingArticle(
         brand=brand[randint(0, len(brand)-1)],
         clothing_type=clothing_type[randint(0, len(clothing_type)-1)],
-        store_id=randint(1, 4),
+        store_id=id,
         price=randint(0, 75))
     session.add(clothing)
     session.commit()
@@ -30,21 +30,34 @@ def make_clothing():
 def make_store():
 
     print("Building Store...")
-    stores = Store(
-        name=store_name[randint(0, len(store_name)-1)]
-    )
-    session.add(stores)
-    session.commit()
-    return stores
+    
+    for id in range(1,len(store_names)):
+        store = Store(
+            name=store_names[id]
+        )
+        for i in range(20):
+            make_clothing(id)
+        session.add(store)
+        session.commit()
 
 
 def make_customer():
-    print("Welcoming Customer...")
+    print("Welcoming Customers...")
     customer = Customer(
-        name="Nick",
+        name="Tyler",
         budget=randint(200, 500)
     )
     session.add(customer)
+    customer2 = Customer(
+        name="Eleanor",
+        budget=randint(200, 500)
+    )
+    session.add(customer2)
+    customer3 = Customer(
+        name="Gehrig",
+        budget=randint(20000, 50000)
+    )
+    session.add(customer3)
     session.commit()
     return customer
 
@@ -59,12 +72,8 @@ def clear_all_data():
 
 def refresh_all_data():
     clear_all_data()
-    for i in range(20):
-        make_clothing()
-    for i in range(5):
-        make_store()
-    for i in range(3):
-        make_customer()
+    make_store()
+    make_customer()
 
 
 if __name__ == '__main__':

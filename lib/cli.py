@@ -54,11 +54,14 @@ if __name__ == "__main__":
         ClothingArticle.id == clothing_articles_id).one_or_none()
     if item == "back" or item == "Back":
         print("Thank you for browsing! Have a nice day!")
-    else:
+    elif customer.budget>item.price:
         customer.budget -= item.price
-        item.custid = customer.id
-        session.commit()
+        item.customer_id = customer.id
         print(
-            f"Thank you for your purchase! You now have ${customer.budget - item.price}")
+            f"Thank you for your purchase! You now have ${customer.budget}")
         print("Have a nice day!")
-        session.close()
+        session.commit()
+    else:  
+        print("Sorry, you're broke! Get some money please and come back!")
+        session.commit()
+session.close()
