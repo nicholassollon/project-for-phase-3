@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 Base = declarative_base()
 
 
-class ClothingArticle:
+class ClothingArticle(Base):
     __tablename__ = 'clothingarticles'
 
     id = Column(Integer(), primary_key=True)
@@ -20,7 +20,7 @@ class ClothingArticle:
 
 
 
-class Customer:
+class Customer(Base):
     __tablename__ = 'customers'
 
     id = Column(Integer(), primary_key=True)
