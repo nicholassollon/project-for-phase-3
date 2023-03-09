@@ -1,8 +1,8 @@
-"""Create ClothingArticle
+"""Store
 
-Revision ID: a62e8a1d8579
-Revises: 
-Create Date: 2023-03-08 15:04:46.665670
+Revision ID: 8953309c0298
+Revises: eb8c96e9fea6
+Create Date: 2023-03-09 11:37:57.848899
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a62e8a1d8579'
-down_revision = None
+revision = '8953309c0298'
+down_revision = 'eb8c96e9fea6'
 branch_labels = None
 depends_on = None
 
