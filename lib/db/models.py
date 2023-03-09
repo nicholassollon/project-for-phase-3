@@ -18,6 +18,7 @@ Base = declarative_base()
 #     Column('clothing_articles_id', ForeignKey('clothing_articles.id'), primary_key=True),
 # )
 
+
 class ClothingArticle(Base):
     __tablename__ = 'clothingarticles'
 
@@ -31,8 +32,7 @@ class ClothingArticle(Base):
     customer = relationship('Customer', back_populates='clothing_articles')
 
     def __repr__(self):
-        return f'{self.clothing_type} by {self.brand}' 
-
+        return f'{self.clothing_type} by {self.brand}'
 
 
 class Customer(Base):
@@ -41,8 +41,9 @@ class Customer(Base):
     id = Column(Integer(), primary_key=True)
     name = Column(String())
     budget = Column(Float())
-    
-    clothing_articles = relationship('ClothingArticle', back_populates='customer')
+
+    clothing_articles = relationship(
+        'ClothingArticle', back_populates='customer')
 
 
 class Store(Base):
@@ -53,5 +54,3 @@ class Store(Base):
 
     def __repr__(self):
         return f'{self.name}'
-
-
