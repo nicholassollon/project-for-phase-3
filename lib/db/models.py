@@ -19,7 +19,6 @@ class ClothingArticle(Base):
         return f'{self.clothing_type} by {self.brand}' 
 
 
-
 class Customer(Base):
     __tablename__ = 'customers'
 
