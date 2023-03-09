@@ -20,7 +20,7 @@ def make_clothing():
     clothing = ClothingArticle(
         brand=brand[randint(0, len(brand)-1)],
         clothing_type=clothing_type[randint(0, len(clothing_type)-1)],
-        store_id=randint(0, 2),
+        store_id=randint(1, 4),
         price=randint(0, 75))
     session.add(clothing)
     session.commit()

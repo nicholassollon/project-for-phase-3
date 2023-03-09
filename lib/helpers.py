@@ -1,3 +1,10 @@
+from sqlalchemy import create_engine, update
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+from sqlalchemy.orm import sessionmaker
+from db.models import Customer, ClothingArticle
+
+engine = create_engine('sqlite:///project-for-phase-3.db', echo=True)
+
 YES = ['y', 'yes']
 NO = ['n', 'no']
 
@@ -50,5 +57,3 @@ def create_customer_clothing_table(clothing):
     print('-' * 50)
 
 
-def payment():
-    pass
