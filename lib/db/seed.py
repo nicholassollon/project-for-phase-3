@@ -30,8 +30,8 @@ def make_clothing(id):
 def make_store():
 
     print("Building Store...")
-    
-    for id in range(1,len(store_names)):
+
+    for id in range(1, len(store_names)):
         store = Store(
             name=store_names[id]
         )
